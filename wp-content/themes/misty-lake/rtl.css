@@ -1,0 +1,160 @@
+/*
+Theme Name: Misty Lake
+
+Adding support for language written in a Right To Left (RTL) direction is easy -
+it's just a matter of overwriting all the horizontal positioning attributes
+of your CSS stylesheet in a separate stylesheet file named rtl.css.
+
+http://codex.wordpress.org/Right_to_Left_Language_Support
+
+*/
+
+body {
+	direction: rtl;
+	unicode-bidi: embed;
+}
+caption, th, td {
+	text-align: right;
+}
+
+/* =Global
+----------------------------------------------- */
+
+ul, ol {
+	margin: 0 3em 1.5em 0;
+}
+ul ul, ol ol, ul ol, ol ul {
+	margin-right: 1.5em;
+	margin-left: auto;
+}
+.alignright {
+	margin-left: 1.5em;
+	margin-right: auto;
+}
+.alignleft {
+	margin-right: 1.5em;
+	margin-left: auto;
+}
+.main-navigation {
+	float: right;
+}
+.main-navigation li {
+    float: right;
+}
+#primary {
+    float: right;
+    margin: 0 0 0 -25%;
+}
+#content {
+    margin: 0 0 0 29.5%;
+}
+#secondary {
+    float: left;
+}
+.entry-content table,
+.comment-content table {
+	margin: 0 0 1.923em 0.077em;
+	text-align: right;
+}
+.entry-content blockquote,
+.comment-content blockquote {
+	border-right: 4px double rgba( 0, 0, 0, 0.1 );
+	padding-right: 1.5em;
+	padding-left: 0;
+	border-left: none;
+}
+.wp-caption.alignleft {
+	margin-right: 1.5em;
+	margin-left: auto;
+}
+.wp-caption.alignright {
+	margin-left: 1.5em;
+	margin-right: auto;
+}
+.site-content .nav-previous {
+	float: right;
+}
+.site-content .nav-next {
+	float: left;
+	text-align: left;
+}
+.rsswidget img {
+	margin: 0.1em !important 0 0;
+}
+.widget-area .sub-menu,
+.widget-area .children {
+	margin-right:  1.5em;
+	margin-left: auto;
+}
+.widget_authors img {
+	float: right;
+	padding-left: 0.833em;
+	padding-right: 0;
+}
+#wp-calendar tbody {
+	border-right-width: 0;
+}
+#wp-calendar tfoot #next {
+	text-align: left;
+}
+.widget_recent_comments td.recentcommentstexttop,
+.widget_recent_comments td.recentcommentstextend {
+	padding: 0 !important 1.1em 0.615em;
+}
+.children {
+	margin: 0 6% 0 0;
+}
+article.comment,
+li.pingback p {
+	margin-right: 1.5em;
+	margin-left: auto;
+}
+.comment-author cite {
+	margin: 2em 5.1em 0 0;
+}
+.comment-content {
+	margin: 0.8em 5.6em 0 0;
+}
+.comment .reply {
+	margin-right: 6em;
+	margin-left: auto;
+}
+#commentform .comment-form-author input,
+#commentform .comment-form-email input {
+	margin-right: 0.5em;
+	margin-left: auto;
+}
+#cancel-comment-reply-link {
+	float: left;
+}
+
+@media screen and (min-width: 37.5em) {
+	.comment-content {
+		margin: 0.8em 5.6em 0 0;
+	}
+	.comment .reply {
+		margin-right: 6em;
+		margin-left: auto;
+	}
+	#commentform .comment-form-author input,
+	#commentform .comment-form-email input {
+		margin-right: 0.5em;
+		margin-left: auto;
+	}
+
+	#cancel-comment-reply-link {
+		float: left;
+	}
+}
+
+@media screen and (min-width: 37.563em) {
+	#commentform .comment-form-author input,
+	#commentform .comment-form-email input {
+		margin-right: 0.5em;
+		margin-left: auto;
+	}
+
+	#cancel-comment-reply-link {
+		float: left;
+	}
+}
