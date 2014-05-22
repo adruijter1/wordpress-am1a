@@ -10,7 +10,7 @@
  
  // Dit is een functie voor het maken van een shortcode
  register_activation_hook(__FILE__, 'jal_install');
- register_activation_hook(__FILE__, 'jal_install_data');
+ 
  add_shortcode('aanmeldformulier', 'formcode' );
  
  function formcode()
@@ -62,6 +62,9 @@
 		$headers .= 'X-mailer: PHP/'.phpversion()."\r\n";
 		
 		mail($to, $subject, $message, $headers);
+		
+		register_activation_hook(__FILE__, 'jal_install_data');
+		
 		header('refresh:4;url=http://localhost/2013-2014/Blok4/wordpress-3.9/wordpress/nu-aanmelden');
 		return 'Uw vraagstelling/klacht is verzonden.<br>Bedankt voor uw reactie.<br><br>
 		Arjan de Ruijter<br>
