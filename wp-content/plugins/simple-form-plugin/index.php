@@ -63,9 +63,9 @@
 		
 		mail($to, $subject, $message, $headers);
 		
-		register_activation_hook(__FILE__, 'jal_install_data');
+		register_activation_hook(__FILE__, jal_install_data($_POST));
 		
-		header('refresh:4;url=http://localhost/2013-2014/Blok4/wordpress-3.9/wordpress/nu-aanmelden');
+		header('refresh:400;url=http://localhost/2013-2014/Blok4/wordpress-3.9/wordpress/nu-aanmelden');
 		return 'Uw vraagstelling/klacht is verzonden.<br>Bedankt voor uw reactie.<br><br>
 		Arjan de Ruijter<br>
 		Logopedist - Klinisch Lingu&iuml;st';
@@ -125,21 +125,20 @@
 	add_option("jal_db_version", "1.0");
  }
  
- function jal_install_data()
+ function jal_install_data($post)
  {
 	global $wpdb;
+	//var_dump($post);
 	$table_name = $wpdb->prefix."register";
 	
-	$rows_affected = $wpdb->insert($table_name, array( 'id' => NULL,
-													   'voornaam' => 'Arjan',
-													   'tussenvoegsel' => 'de',
-													   'achternaam' => 'Ruijter',
-													   'telefoon' => '0251-123456',
-													   'mobiel' => '06-12345678',
-													   'email' =>'adruijter@gmail.com',
-													   'vraag' =>'Dit is mijn eerste record')); 
- }
- 
- 
- 
+	$rows_affected = 
+	$wpdb->insert($table_name, array( 'id' => NULL,
+						   'voornaam' => $_POST['voornaam'],
+						   'tussenvoegsel' => $_POST['tussenvoegsel'],
+						   'achternaam' => $_POST['achternaam'],
+						   'telefoon' => $_POST['telefoon'],
+						   'mobiel' => $_POST['mobiel'],
+						   'email' =>$_POST['email'],
+						   'vraag' =>$_POST['vraag'])); 
+ } 
 ?>
