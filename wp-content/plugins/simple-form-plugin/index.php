@@ -12,6 +12,37 @@
  register_activation_hook(__FILE__, 'jal_install');
  
  add_shortcode('aanmeldformulier', 'formcode' );
+ add_shortcode('gebruikers', 'show_registered_users');
+ 
+ function show_registered_users()
+ {
+	global $wpdb;
+	
+	$query = "SELECT * FROM wp_register";
+	
+	$result = $wpdb->get_results( $query, OBJECT );
+	//var_dump($result);
+	$output;
+	
+	$output = "<table>
+				<tr>
+					<th>voornaam</th>
+					<th>tussenvoegsel</th>
+					<th>achternaam</th>					
+				</tr>";
+			  
+	foreach ( $result as $key => $value)
+	{
+		$output .= "<tr>
+						<td>".$value->voornaam."</td>
+						<td>".$value->tussenvoegsel."</td>
+						<td>".$value->achternaam."</td>	
+						
+					</tr>";
+	}
+	$output .= "</table>";
+	return $output;
+ }
  
  function formcode()
  {
