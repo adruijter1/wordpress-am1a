@@ -18,6 +18,16 @@
  {
 	global $wpdb;
 	
+	if ( isset($_GET['id'] ))
+	{
+		$query = "DELETE FROM `wp_register` WHERE `id` = '".$_GET['id']."'";
+		return $query;
+		//return "Er is geklikt op record-id: ".$_GET['id'];
+		
+	}
+	else
+	{
+	
 	$query = "SELECT * FROM wp_register";
 	
 	$result = $wpdb->get_results( $query, OBJECT );
@@ -28,7 +38,8 @@
 				<tr>
 					<th>voornaam</th>
 					<th>tussenvoegsel</th>
-					<th>achternaam</th>					
+					<th>achternaam</th>
+					<th>&nbsp;</th>
 				</tr>";
 			  
 	foreach ( $result as $key => $value)
@@ -37,11 +48,16 @@
 						<td>".$value->voornaam."</td>
 						<td>".$value->tussenvoegsel."</td>
 						<td>".$value->achternaam."</td>	
-						
+						<td>
+							<a href='?id=".$value->id."'>
+								<img src='../wp-content/plugins/simple-form-plugin/images/drop.png' alt='delete' />
+							</a>
+						</td>
 					</tr>";
 	}
 	$output .= "</table>";
 	return $output;
+	}
  }
  
  function formcode()
