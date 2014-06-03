@@ -21,8 +21,16 @@
 	if ( isset($_GET['id'] ))
 	{
 		$query = "DELETE FROM `wp_register` WHERE `id` = '".$_GET['id']."'";
-		return $query;
+		//return $query;
 		//return "Er is geklikt op record-id: ".$_GET['id'];
+		$query1 = "DELETE FROM `wp_register` WHERE `id` = %d";
+		/*
+		$wpdb->query($query);
+		header('refresh:4;url=http://localhost/2013-2014/Blok4/wordpress-3.9/wordpress/gebruikers');
+		*/
+		
+		$wpdb->query($wpdb->prepare($query1, $_GET['id']));
+		return "Het record is succesvol verwijderd.";
 		
 	}
 	else
