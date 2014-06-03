@@ -18,7 +18,13 @@
  {
 	global $wpdb;
 	
-	if ( isset($_GET['id'] ))
+	if ( $_GET['update'] == true )
+	{
+		return "We gaan updaten";
+		$query = "SELECT * FROM ";
+		
+	}
+	else if ( isset($_GET['id'] ))
 	{
 		$query = "DELETE FROM `wp_register` WHERE `id` = '".$_GET['id']."'";
 		//return $query;
@@ -59,6 +65,9 @@
 						<td>
 							<a href='?id=".$value->id."'>
 								<img src='../wp-content/plugins/simple-form-plugin/images/drop.png' alt='delete' />
+							</a>
+							<a href='?id=".$value->id."&update=true'>
+								<img src='../wp-content/plugins/simple-form-plugin/images/edit.png' alt='delete' />
 							</a>
 						</td>
 					</tr>";
